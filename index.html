@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <title>shx.com</title>
+
+  <style>
+    :root {
+      --paper: #efeee9;
+      --ink: #050505;
+      --line: 7px;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--paper);
+      color: var(--ink);
+      font-family:
+        "Arial Black",
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        sans-serif;
+      letter-spacing: -0.04em;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .site {
+      min-height: 100svh;
+      background:
+        radial-gradient(circle at 82% 10%, rgba(255,255,255,0.38), transparent 30%),
+        linear-gradient(180deg, #f4f3ee 0%, var(--paper) 48%, #e4e2da 100%);
+    }
+
+    .top {
+      padding-top: max(2.1vh, env(safe-area-inset-top));
+      padding-left: 1.55vw;
+      padding-right: 1.55vw;
+    }
+
+    .rule-heavy {
+      height: var(--line);
+      background: var(--ink);
+      width: 100%;
+    }
+
+    .masthead {
+      padding: clamp(70px, 13vh, 160px) 1.1vw clamp(34px, 6vh, 82px);
+      overflow: hidden;
+    }
+
+    .masthead h1 {
+      margin: 0;
+      font-size: clamp(92px, 22.1vw, 360px);
+      line-height: 0.76;
+      font-weight: 950;
+      letter-spacing: -0.115em;
+      text-transform: lowercase;
+      white-space: nowrap;
+    }
+
+    .panel {
+      min-height: 44.9svh;
+      background: linear-gradient(180deg, #050505 0%, #090909 72%, #0e0e0e 100%);
+      color: var(--paper);
+      padding:
+        clamp(32px, 6vh, 78px)
+        4.8vw
+        calc(clamp(42px, 8vh, 96px) + env(safe-area-inset-bottom));
+    }
+
+    .statement {
+      max-width: min(82vw, 1220px);
+    }
+
+    .statement p {
+      margin: 0;
+      max-width: 16ch;
+      font-size: clamp(27px, 4.1vw, 78px);
+      line-height: 0.98;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.055em;
+      text-wrap: balance;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,0.2),
+        0 0 1px rgba(255,255,255,0.28);
+    }
+
+    .statement p:nth-of-type(2) {
+      max-width: 22ch;
+    }
+
+    .statement p:nth-of-type(3) {
+      max-width: 17ch;
+    }
+
+    .statement .rule {
+      height: 2px;
+      background: rgba(255,255,255,0.78);
+      margin: clamp(22px, 3.4vh, 42px) 0;
+      width: 94vw;
+      max-width: 1340px;
+    }
+
+    .bottom-rule {
+      height: 2px;
+      background: rgba(255,255,255,0.72);
+      margin-top: clamp(34px, 6vh, 76px);
+      width: 100%;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 30;
+      opacity: 0.04;
+      mix-blend-mode: multiply;
+      background-image:
+        repeating-radial-gradient(circle at 17% 23%,
+          #000 0,
+          #000 0.8px,
+          transparent 1.2px,
+          transparent 3px
+        );
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --line: 5px;
+      }
+
+      .masthead {
+        padding-top: clamp(74px, 15svh, 128px);
+        padding-bottom: 42px;
+      }
+
+      .masthead h1 {
+        font-size: clamp(76px, 25vw, 135px);
+        letter-spacing: -0.12em;
+      }
+
+      .panel {
+        min-height: 52svh;
+        padding:
+          42px
+          5vw
+          calc(58px + env(safe-area-inset-bottom));
+      }
+
+      .statement {
+        max-width: 94vw;
+      }
+
+      .statement p {
+        max-width: 15ch;
+        font-size: clamp(21px, 6.7vw, 46px);
+        line-height: 1.04;
+      }
+
+      .statement p:nth-of-type(2) {
+        max-width: 18ch;
+      }
+
+      .statement p:nth-of-type(3) {
+        max-width: 15ch;
+      }
+
+      .statement .rule {
+        margin: 24px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="site" aria-label="shx.com">
+    <header class="top">
+      <div class="rule-heavy"></div>
+    </header>
+
+    <section class="masthead" aria-hidden="true">
+      <h1>shx.com</h1>
+    </section>
+
+    <section class="panel">
+      <div class="statement">
+        <p>This is not a website.</p>
+        <div class="rule"></div>
+        <p>It is the public surface of a private domain.</p>
+        <div class="rule"></div>
+        <p>The domain is not for sale.</p>
+        <div class="bottom-rule"></div>
+      </div>
+    </section>
+
+    <div class="grain"></div>
+  </main>
+</body>
+</html>
