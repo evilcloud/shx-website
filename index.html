@@ -15,7 +15,6 @@
       --ink: #050505;
       --white: #f2efe7;
       --muted: rgba(5, 5, 5, 0.58);
-      --muted-white: rgba(242, 239, 231, 0.62);
       --hair-white: rgba(242, 239, 231, 0.32);
 
       --outer: clamp(10px, 1.8vw, 30px);
@@ -71,7 +70,7 @@
         linear-gradient(90deg, rgba(5, 5, 5, 0.028) 1px, transparent 1px),
         linear-gradient(180deg, #f1eee6 0%, var(--paper) 46%, var(--paper-2) 100%);
       background-size: 56px 56px, 100% 100%;
-      overflow: clip;
+      overflow-x: clip;
     }
 
     .frame {
@@ -288,67 +287,175 @@
       }
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 720px) {
       :root {
-        --outer: 10px;
+        --outer: 0px;
         --rule: 5px;
       }
 
-      .topbar {
-        grid-template-columns: 1fr;
-        gap: 7px;
+      .site {
+        min-height: 100svh;
+        padding: 0;
+        background: var(--paper);
       }
 
-      .topbar span,
-      .topbar span:last-child {
+      .frame {
+        min-height: 100svh;
+        border: 0;
+        grid-template-rows: auto 1fr auto;
+        background: var(--paper);
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: var(--rule) solid var(--ink);
+        padding:
+          calc(12px + env(safe-area-inset-top))
+          12px
+          11px;
+        font-size: 10px;
+      }
+
+      .topbar span:first-child {
+        display: none;
+      }
+
+      .topbar span:nth-child(2) {
         text-align: left;
       }
 
+      .topbar span:last-child {
+        display: block;
+        text-align: right;
+        color: var(--muted);
+      }
+
       .body {
-        grid-template-rows: minmax(170px, 32svh) auto;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-height: 0;
       }
 
       .masthead {
-        padding-top: clamp(38px, 8vh, 72px);
+        min-height: 30svh;
+        align-items: end;
+        padding:
+          clamp(54px, 12svh, 96px)
+          12px
+          10px;
+        background:
+          linear-gradient(90deg, rgba(5, 5, 5, 0.035) 1px, transparent 1px),
+          var(--paper);
+        background-size: 42px 42px;
       }
 
       .masthead h1 {
-        font-size: clamp(50px, 17.7vw, 126px);
-        line-height: 0.78;
-        letter-spacing: -0.048em;
+        font-size: clamp(55px, 20vw, 88px);
+        line-height: 0.86;
+        letter-spacing: -0.04em;
       }
 
       .panel {
-        gap: 36px;
+        display: block;
+        min-height: 0;
+        border-top: var(--rule) solid var(--ink);
         padding:
-          36px
-          5vw
-          calc(54px + env(safe-area-inset-bottom));
+          30px
+          18px
+          calc(34px + env(safe-area-inset-bottom));
+      }
+
+      .statement {
+        max-width: none;
       }
 
       .statement p {
-        max-width: 15ch;
-        font-size: clamp(23px, 6.85vw, 46px);
-        line-height: 1.03;
-        letter-spacing: 0.01em;
+        max-width: 14.5ch;
+        font-size: clamp(25px, 7.15vw, 38px);
+        line-height: 1.02;
+        font-weight: 900;
+        letter-spacing: 0.006em;
       }
 
       .statement p:first-child {
-        max-width: 14ch;
-        font-size: clamp(29px, 8vw, 54px);
+        max-width: 12ch;
+        font-size: clamp(31px, 8.8vw, 46px);
+        line-height: 0.97;
+      }
+
+      .statement p + p {
+        margin-top: 22px;
+        padding-top: 20px;
+        border-top: 2px solid rgba(242, 239, 231, 0.68);
       }
 
       .statement p:nth-child(2) {
-        max-width: 18ch;
+        max-width: 17ch;
+      }
+
+      .statement p:nth-child(3) {
+        max-width: 13ch;
+      }
+
+      .audit {
+        margin-top: 34px;
+        padding-top: 13px;
+        border-top: 2px solid var(--hair-white);
+        border-left: 0;
+        padding-left: 0;
+        display: block;
+      }
+
+      .audit dl {
+        font-size: 10px;
+        line-height: 1.22;
       }
 
       .audit div {
-        grid-template-columns: 8ch minmax(0, 1fr);
+        grid-template-columns: 7.5ch minmax(0, 1fr);
+        gap: 12px;
+        padding: 7px 0;
       }
 
       .footer {
-        flex-direction: column;
-        gap: 7px;
+        border-top: var(--rule) solid var(--ink);
+        padding:
+          10px
+          12px
+          calc(11px + env(safe-area-inset-bottom));
+        display: block;
+        font-size: 10px;
+        line-height: 1.25;
+      }
+
+      .footer span {
+        display: block;
+        white-space: normal;
+      }
+
+      .footer span + span {
+        margin-top: 3px;
+      }
+
+      .grain {
+        opacity: 0.035;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .masthead h1 {
+        font-size: clamp(49px, 19.3vw, 73px);
+        letter-spacing: -0.035em;
+      }
+
+      .statement p {
+        font-size: clamp(23px, 6.8vw, 32px);
+      }
+
+      .statement p:first-child {
+        font-size: clamp(29px, 8.3vw, 39px);
       }
     }
   </style>
